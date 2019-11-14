@@ -13,16 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description:
  */
 @RestController
-@RequestMapping("/hello")
 public class HelloController {
 
     @Autowired
     private Resource resource;
 
-    @RequestMapping("/")
-    public JSONResult hello(){
-        Resource resource1 = new Resource();
-        BeanUtils.copyProperties(resource1,resource);
-        return JSONResult.ok(resource1);
+    @RequestMapping("/hello")
+    public Object hello() {
+        return "hello springboot~~";
+    }
+
+    @RequestMapping("/getResource")
+    public JSONResult getResource() {
+        Resource bean = new Resource();
+        BeanUtils.copyProperties(resource, bean);
+        return JSONResult.ok(bean);
     }
 }
