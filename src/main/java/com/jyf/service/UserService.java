@@ -21,4 +21,6 @@ public interface UserService {
 
     SysUser queryUserSimplyInfoById(String id);
 
+    void saveUserTransactional(SysUser sysUser);
+
 }

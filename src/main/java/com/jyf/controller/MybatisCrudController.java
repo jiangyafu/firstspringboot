@@ -68,4 +68,21 @@ public class MybatisCrudController {
         return JSONResult.ok(sysUser);
     }
 
+    @RequestMapping("/saveUserTransactional")
+    public JSONResult saveUserTransactional(){
+        String userId = sid.nextShort();
+
+        SysUser user = new SysUser();
+        user.setId(userId);
+        user.setUsername("jyf" + new Date());
+        user.setNickname("jyf" + new Date());
+        user.setPassword("abc123");
+        user.setIsDelete(0);
+        user.setRegistTime(new Date());
+
+        userService.saveUserTransactional(user);
+
+        return JSONResult.ok();
+    }
+
 }

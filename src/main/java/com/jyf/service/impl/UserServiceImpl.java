@@ -7,6 +7,8 @@ import com.jyf.mapper.SysUserMapperCustom;
 import com.jyf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
@@ -19,32 +21,38 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private SysUserMapperCustom sysUserMapperCustom;
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public void save(SysUser sysUser) {
         userMapper.insert(sysUser);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public void update(SysUser sysUser) {
         userMapper.updateByPrimaryKeySelective(sysUser);
 //        userMapper.updateByPrimaryKey(sysUser); 其他字段干空
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(String userId) {
         userMapper.deleteByPrimaryKey(userId);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public SysUser queryUserById(String userId) {
         return userMapper.selectByPrimaryKey(userId);
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public List<SysUser> queryUserList(SysUser sysUser) {
         return userMapper.select(sysUser);
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public List<SysUser> queryUserListPaged(SysUser sysUser, Integer page, Integer pageSize) {
 
         PageHelper.startPage(page,pageSize);
@@ -65,5 +73,17 @@ public class UserServiceImpl implements UserService {
             return (SysUser)userList.get(0);
         }
         return null;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void saveUserTransactional(SysUser sysUser) {
+        userMapper.insert(sysUser);
+
+        int a = 1/0;
+
+//        userMapper.updateByPrimaryKeySelective(sysUser);
+        sysUser.setIsDelete(1);
+        this.update(sysUser);
     }
 }
