@@ -4,76 +4,59 @@ import com.jyf.domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.thymeleaf.expression.Lists;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @Auther: yafu jiang
- * @Date: 2019/11/14 0014 17:17
- * @Description:
- */
-@Controller
-@RequestMapping("th")
+@Controller()
+@RequestMapping("/th")
 public class ThymeleafController {
     @RequestMapping("/index")
-    public String index(ModelMap map) {
-        map.addAttribute("name", "thymeleaf-imooc111");
+    public String index(ModelMap modelMap){
+        modelMap.addAttribute("name","hello ThymeleafController");
         return "thymeleaf/index";
     }
-
-    @RequestMapping("/main")
-    public String main(ModelMap map) {
-        map.addAttribute("name", "thymeleaf-imooc111");
-        return "thymeleaf/main";
+    @RequestMapping("/center")
+    public String center(){
+        return "thymeleaf/center/center";
     }
-    @RequestMapping("test")
-    public String test(ModelMap map) {
 
-        User u = new User();
-        u.setName("jyf1");
-        u.setPassword("123456");
-        u.setAge(10);
-        u.setBirthday(new Date());
-        u.setDesc("<font color='green'><b>hello imooc</b></font>");
+    @RequestMapping("/test")
+    public String test(ModelMap modelMap){
 
-        map.addAttribute("user", u);
+        User user1 = new User();
+        user1.setName("superadmin");
+        user1.setAge(18);
+        user1.setBirthday(new Date());
+        user1.setDesc("<font color='green'><b>hello jyf</b></font>");
+        modelMap.addAttribute("user",user1);
 
-        User u1 = new User();
-        u1.setName("jyf2");
-        u1.setPassword("123456");
-        u1.setAge(19);
-        u1.setBirthday(new Date());
+        User user2 = new User();
+        user2.setName("jyf2");
+        user2.setAge(19);
+        user2.setBirthday(new Date());
 
-        User u2 = new User();
-        u2.setAge(17);
-        u2.setName("jyf3");
-        u2.setPassword("123456");
-        u2.setBirthday(new Date());
+        User user3 = new User();
+        user3.setName("jyf3");
+        user3.setAge(17);
+        user3.setBirthday(new Date());
 
         List<User> userList = new ArrayList<>();
-        userList.add(u);
-        userList.add(u1);
-        userList.add(u2);
-
-        map.addAttribute("userList", userList);
-
+        userList.add(user1);
+        userList.add(user2);
+        userList.add(user3);
+        modelMap.addAttribute("userList",userList);
         return "thymeleaf/test";
     }
 
-    @RequestMapping("postform")
-    public String postform(User user){
+    @RequestMapping("/postForm")
+    public String postForm(User user){
         System.out.println("user.getName() = " + user.getName());
-        System.out.println("user.getName() = " + user.getAge());
+        System.out.println("user.getAge() = " + user.getAge());
         return "redirect:/th/test";
     }
 
-    @RequestMapping("showerror")
-    public String showerror(User u) {
 
-        int a = 1 / 0;
-
-        return "redirect:/th/test";
-    }
 }
