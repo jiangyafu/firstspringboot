@@ -1,4 +1,4 @@
-package com.jyf.controller.Inteceptor;
+package com.jyf.controller.Interceptor;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

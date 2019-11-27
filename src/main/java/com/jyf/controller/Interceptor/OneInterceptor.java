@@ -1,4 +1,4 @@
-package com.jyf.controller.Inteceptor;
+package com.jyf.controller.Interceptor;
 
 import com.jyf.domain.JSONResult;
 import com.jyf.utils.JsonUtils;
@@ -11,18 +11,18 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
-public class TwoInteceptor implements HandlerInterceptor {
+public class OneInterceptor implements HandlerInterceptor {
     /**
      * 处理请求之前进行调用（Controller方法调用之前）
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (true) {
-            returnErrorResponse(response, JSONResult.errorMsg("被two拦截..."));
-        }
-        System.out.println("被TwoInteceptor拦截");
-//        return true;
-        return false;
+//        if (true) {
+//            returnErrorResponse(response, JSONResult.errorMsg("被two拦截..."));
+//        }
+        System.out.println("被OneIntecepter拦截放行");
+        return true;
+//        return false;
     }
     /**
      * 处理请求之后进行调用，但是在视图被渲染之前（controller方法调用之后）
