@@ -1,8 +1,6 @@
 package com.jyf.exection;
 
-import com.jyf.utils.JSONResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import com.jyf.domain.JSONResult;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

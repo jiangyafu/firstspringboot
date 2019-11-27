@@ -1,4 +1,4 @@
-package com.jyf.utils;
+package com.jyf.domain;
 
 import java.util.List;
 

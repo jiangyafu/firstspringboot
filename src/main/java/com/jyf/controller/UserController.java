@@ -2,12 +2,9 @@ package com.jyf.controller;
 
 import com.jyf.domain.Resource;
 import com.jyf.domain.User;
-import com.jyf.utils.JSONResult;
-import org.springframework.beans.BeanUtils;
+import com.jyf.domain.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;

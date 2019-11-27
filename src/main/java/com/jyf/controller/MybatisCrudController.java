@@ -3,7 +3,7 @@ package com.jyf.controller;
 
 import com.jyf.domain.SysUser;
 import com.jyf.service.UserService;
-import com.jyf.utils.JSONResult;
+import com.jyf.domain.JSONResult;
 import org.n3r.idworker.Sid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,14 +40,14 @@ public class MybatisCrudController {
     @RequestMapping("/updateUser")
     public JSONResult updateUser(){
         SysUser sysUser = new SysUser();
-        sysUser.setId("191118HHM8YKF23C");
-        sysUser.setUsername("jyf1"+new Date());
+        sysUser.setId("191127GMHS6PA3C0");
+        sysUser.setUsername("jyf"+new Date());
         sysUser.setNickname("简单1");
         sysUser.setPassword("jjjj");
         sysUser.setIsDelete(0);
         sysUser.setRegistTime(new Date());
         userService.update(sysUser);
-        return JSONResult.ok("保存成功");
+        return JSONResult.ok("更改成功");
     }
 
     @RequestMapping("/queryUserListPaged")

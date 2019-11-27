@@ -9,6 +9,7 @@ import java.util.concurrent.Future;
 
 /**
  * 发送短信  发送邮件   app消息推送     节省运维凌晨发布任务时间提供效率
+ * 异步任务
  */
 @RestController
 @RequestMapping("/tasks")

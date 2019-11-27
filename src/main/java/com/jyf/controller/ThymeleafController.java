@@ -57,6 +57,12 @@ public class ThymeleafController {
         System.out.println("user.getAge() = " + user.getAge());
         return "redirect:/th/test";
     }
+    @RequestMapping("showerror")
+    public String showerror(User u) {
 
+        int a = 1 / 0;
+
+        return "redirect:/th/test";
+    }
 
 }

@@ -2,14 +2,13 @@ package com.jyf.controller;
 
 import com.jyf.domain.SysUser;
 import com.jyf.domain.User;
-import com.jyf.utils.JSONResult;
+import com.jyf.domain.JSONResult;
 import com.jyf.utils.JsonUtils;
 import com.jyf.utils.RedisOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.thymeleaf.expression.Lists;
 
 import java.util.ArrayList;
 import java.util.Date;
