@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jyf.zgirl.dao.GirlDao" >
+
+    <sql id="allData">
+          a.Id,
+          a.Age,
+          a.Name
+    </sql>
+    <insert id="insert" parameterType="com.jyf.zgirl.domain.Girl" useGeneratedKeys="true" keyProperty="id">
+          INSERT INTO `girl`( `Age`, `Name`) VALUES ( #{age}, #{name})
+    </insert>
+
+    <select id="get" parameterType="java.lang.Integer" resultType="com.jyf.zgirl.domain.Girl">
+        select <include refid="allData"/> from girl a limit 1
+    </select>
+</mapper>
